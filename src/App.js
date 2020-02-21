@@ -38,22 +38,15 @@ function App() {
   
   const addActivity =(dayName, nActivity)=> dispatch({type: dayName, payload:nActivity});
     
-  const handleActivities = (dayName, nActivity) => {
-    
-    console.log(days, dayName)
-    let activitiesClone = [...(days[dayName])];
-        console.log(activitiesClone)
+  const handleActivities = (dayName, nActivity) => {    
+    let activitiesClone = [...(days[dayName])];      
     let index = activitiesClone.findIndex(item=> item.id ===nActivity.id);
     if (index !==-1) {
-
       activitiesClone[index]=nActivity;
     } else {
       activitiesClone.push(nActivity);
     }
     addActivity(dayName, activitiesClone);
-  
-
-
   }
     
   const dayKeys = Object.keys(days);

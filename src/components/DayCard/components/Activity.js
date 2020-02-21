@@ -1,8 +1,9 @@
 import React, {useContext} from 'react';
+import './Activity.scss';
 import ScheduleContext from '../../../ScheduleContext';
 const Activity = ({activity, dayName}) => {
     const {useBool,handleActivities} = useContext(ScheduleContext);
-    const [checkboxBool, toggleValue] = useBool(false);
+    const [checkboxBool, toggleValue] = useBool(true);
    
     const handleChange =()=>{
         toggleValue();
@@ -18,8 +19,13 @@ const Activity = ({activity, dayName}) => {
     return(
         <div>
             <span> edit </span>
-            <span> {activity.name}</span>
-            <span> {activity.quantity}</span>
+            <span  className={checkboxBool?  null : "done" }> 
+                {activity.name}
+            </span>
+
+            <span className={checkboxBool? null : "done" }> 
+                {activity.quantity}
+            </span>
             <input type="checkbox" onChange={handleChange} />
         </div>
     );
