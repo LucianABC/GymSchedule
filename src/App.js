@@ -1,8 +1,8 @@
 import React, {useState, useReducer} from 'react';
 import './App.css';
 import ScheduleContext from './ScheduleContext';
-import DayCard from './components/DayCard/DayCard';
-import BrowserMenu from './components/BrowserMenu/BrowserMenu';
+import Agenda from './components/Agenda/Agenda';
+import useBool from './components/useBoolean';
 
 const reducer =(state, action) =>{
   switch(action.type){
@@ -26,8 +26,7 @@ const reducer =(state, action) =>{
 }; 
 
 function App() {
-
-  const days = {
+  const [days, dispatch] = useReducer(reducer, {
     Lunes:[{id:0,name:"abdominales",quantity:0,done:true}],
     Martes:[],
     Miercoles:[],
@@ -35,32 +34,40 @@ function App() {
     Viernes:[],
     Sabado:[],
     Domingo:[]
-  }
-  const [state, dispatch] = useReducer(reducer, days);
-
-  const addActivity =(dayName)=> dispatch({type: dayName, payload:activities})
-
-  const [activities, setActivities] = useState();
-
+  });
+  
+  const addActivity =(dayName, nActivity)=> dispatch({type: dayName, payload:nActivity});
+    
   const handleActivities = (dayName, nActivity) => {
-    setActivities(...activities, nActivity)
-    addActivity(dayName)
+    
+    console.log(days, dayName)
+    let activitiesClone = [...(days[dayName])];
+        console.log(activitiesClone)
+    let index = activitiesClone.findIndex(item=> item.id ===nActivity.id);
+    if (index !==-1) {
+
+      activitiesClone[index]=nActivity;
+    } else {
+      activitiesClone.push(nActivity);
+    }
+    addActivity(dayName, activitiesClone);
+  
+
+
   }
-  const dayKeys = Object.keys(days)
+    
+  const dayKeys = Object.keys(days);
 
   return (
     <ScheduleContext.Provider value={{
       days,
       handleActivities,
-      dayKeys
+      dayKeys,
+      useBool
     }}>
 
       <div className="App">
-        {
-          dayKeys.map(key =>{
-            return  <DayCard dayName={key} ></DayCard>
-          })
-        }
+        <Agenda></Agenda>
       </div>
     </ScheduleContext.Provider>
   );

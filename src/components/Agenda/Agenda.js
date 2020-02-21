@@ -1,16 +1,18 @@
 import React, {useContext} from 'react';
 import ScheduleContext from '../../ScheduleContext';
+import DayCard from '../DayCard/DayCard';
 
-import './agenda.scss';
+import './Agenda.scss';
 
 const Agenda = () => {
-    const {days, daysKeys} = useContext(ScheduleContext);
+    const {dayKeys} = useContext(ScheduleContext);
     return(
-        <section>{
-            daysKeys.map(key=>{
-                return <DayCard dayName={key}></DayCard>
-            })
-        }
+        <section>
+            {
+                dayKeys.map(key =>{
+                    return  <DayCard dayName={key} ></DayCard>
+                })
+            }
         </section>
     );
 }
