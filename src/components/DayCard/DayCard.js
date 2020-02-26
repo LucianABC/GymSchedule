@@ -17,7 +17,7 @@ const DayCard = ({dayName}) => {
             quantity: quantity,
             done: false
         }
-        handleActivities(dayName, activity);
+        handleActivities(dayName, "add", activity);
     }
     return(
         <div className="day-card">

@@ -27,7 +27,7 @@ const reducer =(state, action) =>{
 
 function App() {
   const [days, dispatch] = useReducer(reducer, {
-    Lunes:[{id:0,name:"abdominales",quantity:0,done:true}],
+    Lunes:[{id:0,name:"abdominales",quantity:0,done:false}],
     Martes:[],
     Miercoles:[],
     Jueves:[],
@@ -36,17 +36,23 @@ function App() {
     Domingo:[]
   });
   
-  const addActivity =(dayName, nActivity)=> dispatch({type: dayName, payload:nActivity});
+  const refreshActivities =(dayName, nActivity)=> dispatch({type: dayName, payload:nActivity});
     
-  const handleActivities = (dayName, nActivity) => {    
+  const handleActivities = (dayName, action, nActivity) => {    
     let activitiesClone = [...(days[dayName])];      
-    let index = activitiesClone.findIndex(item=> item.id ===nActivity.id);
-    if (index !==-1) {
-      activitiesClone[index]=nActivity;
-    } else {
-      activitiesClone.push(nActivity);
+    let index = activitiesClone.findIndex(item=> item.id ==nActivity.id);
+    switch(action){
+        case "edit": 
+            activitiesClone[index]=nActivity;
+          break;
+        case "delete":
+            activitiesClone.splice(index,1);
+          break;
+        case "add":
+          activitiesClone.push(nActivity);
+        break;
     }
-    addActivity(dayName, activitiesClone);
+    refreshActivities(dayName, activitiesClone);
   }
     
   const dayKeys = Object.keys(days);
