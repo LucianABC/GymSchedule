@@ -20,18 +20,21 @@ const DayCard = ({dayName}) => {
     }
     return(
         <div className="day-card">
+            <div className="activities-container">
             {
             days[dayName].map(activity =>{
                 return (<Activity dayName={dayName} 
                                     activity={activity}></Activity>)
                 })
             }
-            <button onClick={toggleValue}>+</button>
+            </div>
+          
+            <button className="new-bttn" onClick={toggleValue}>New activity</button>
             {bool?
-            <div>
-                <input type="text" onChange={e=> setActivityName(e.target.value)}/>
-                <input type="number" onChange={e=> setQuantity(e.target.value)}/>
-                <button onClick={handleClick}> Send</button> 
+            <div className="add-activity">
+                <input type="number" className="new-quant" onChange={e=> setQuantity(e.target.value)}/>
+                <input type="text" className="new-act" onChange={e=> setActivityName(e.target.value)}/>
+                <button onClick={handleClick}> OK!</button> 
             </div> : null}
         </div>
     );

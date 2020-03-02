@@ -14,10 +14,8 @@ const Activity = ({activity, dayName}) => {
     const deleteActivity = ()=> {
         handleActivities(dayName, "delete",activity);
     }
-  
-
+    
     const handleEdition =()=>{
-  
         const nActivity={
             id: activity.id,
             name: name,
@@ -25,7 +23,6 @@ const Activity = ({activity, dayName}) => {
             done: checkboxBool
         }   
         handleActivities(dayName, "edit", nActivity);
-        
     };
 
     return(
@@ -36,11 +33,10 @@ const Activity = ({activity, dayName}) => {
                                             handleEdition();}} />
             {ableEdition ?
                 <div className="activity-content-editor">
-                    <input type="text" className="name-input" value={name} 
-                                                            onChange={e=>{setName(e.target.value)} }/> 
-            
                     <input type="number" className="quantity-input" value={quant}
                                                                     onChange={e=>{setQuant(e.target.value)}}/> 
+                    <input type="text" className="name-input" value={name} 
+                                                            onChange={e=>{setName(e.target.value)} }/> 
                 </div>
                 :
                 <div className="activity-content">
@@ -52,12 +48,10 @@ const Activity = ({activity, dayName}) => {
                     </span>
                 </div>
             }
-
                 <span className="edit-activity">
                     <FontAwesomeIcon icon={faPen} className="icon" onClick={toggleEditor}/>              
                     <FontAwesomeIcon icon={faTrashAlt} onClick={deleteActivity} className="icon" />
                 </span>
-            </div>
             {ableEdition ? 
                 <button onClick={e=>{
                                 handleEdition();
@@ -65,6 +59,7 @@ const Activity = ({activity, dayName}) => {
                                 }}>
                     Ok
                 </button> : null}
+            </div>
         </div>
     );
 }
