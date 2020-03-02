@@ -1,8 +1,7 @@
 import React, {useState,useContext} from 'react';
 import ScheduleContext from '../../ScheduleContext';
 import './DayCard.scss';
-import Activity from './components/Activity'
-import Title from './components/Title/Title';
+import Activity from './Activity/Activity';
 
 const DayCard = ({dayName}) => {
     const {days, handleActivities, useBool} = useContext(ScheduleContext);
@@ -21,7 +20,6 @@ const DayCard = ({dayName}) => {
     }
     return(
         <div className="day-card">
-            <Title day={dayName}></Title>
             {
             days[dayName].map(activity =>{
                 return (<Activity dayName={dayName} 

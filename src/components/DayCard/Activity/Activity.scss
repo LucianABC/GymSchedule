@@ -2,22 +2,25 @@
     text-decoration: line-through
 }
 
-
-.activity-container {
-    align-items: center;
+.activity {
+    
     box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
     width: 100%;
-    margin: 4px;
-    padding: 5px;
-
-    .activity-content {
+    margin: 5px;
+    padding: 15px;
+    .activity-container {
         align-items: center;
+        box-sizing: border-box;
         display: flex;
         justify-content: space-between;
-        span {
-            margin: 5px;
+        .activity-content {
+            box-sizing: border-box;
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            span {
+                margin: 5px;
+            }
         }
     }
 }

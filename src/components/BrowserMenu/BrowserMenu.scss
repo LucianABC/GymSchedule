@@ -1,8 +1,8 @@
 .browser-router {
+    align-items: center;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
 
-    .browser-router-context {
-        display: flex;
-        flex-direction:column;
-    }
 }

@@ -40,7 +40,7 @@ import DayCard from '../DayCard/DayCard';
         ]
         return (
             <div className="browser-router">
-                <BrowserRouter className="browser-router"> 
+                <BrowserRouter className="browser-router-content"> 
                     <Links days={Days}/>
                     <Switch>
                         {   

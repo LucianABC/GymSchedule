@@ -1,7 +1,10 @@
 .day-card {
-    background-color: gray;
+    background-color: #fdfdfd;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     height: 300px;
-    padding: 15px;
-    width: 300px;
-    margin: 15px;
+    padding: 40px;
+    width: 90%;
+    margin: 0;
 }

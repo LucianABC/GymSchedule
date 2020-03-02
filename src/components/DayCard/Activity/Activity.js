@@ -29,12 +29,11 @@ const Activity = ({activity, dayName}) => {
     };
 
     return(
-        <div>
+        <div className="activity">
             <div className="activity-container">
-                <span className="edit-activity">
-                    <FontAwesomeIcon icon={faPen} className="icon" onClick={toggleEditor}/>              
-                    <FontAwesomeIcon icon={faTrashAlt} onClick={deleteActivity} className="icon" />
-                </span>
+                <input type="checkbox" onChange={e=>{
+                                            toggleValue();
+                                            handleEdition();}} />
             {ableEdition ?
                 <div className="activity-content-editor">
                     <input type="text" className="name-input" value={name} 
@@ -45,17 +44,19 @@ const Activity = ({activity, dayName}) => {
                 </div>
                 :
                 <div className="activity-content">
-                    <span  className={checkboxBool?  null : "done" }> 
-                        {activity.name}
-                    </span>
                     <span className={checkboxBool? null : "done" }> 
                         {activity.quantity}
                     </span>
+                    <span  className={checkboxBool?  null : "done" }> 
+                        {activity.name}
+                    </span>
                 </div>
             }
-                <input type="checkbox" onChange={e=>{
-                                        toggleValue();
-                                        handleEdition();}} />
+
+                <span className="edit-activity">
+                    <FontAwesomeIcon icon={faPen} className="icon" onClick={toggleEditor}/>              
+                    <FontAwesomeIcon icon={faTrashAlt} onClick={deleteActivity} className="icon" />
+                </span>
             </div>
             {ableEdition ? 
                 <button onClick={e=>{
