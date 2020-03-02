@@ -1,7 +1,8 @@
-import React, {useState, useReducer} from 'react';
+import React, {useReducer} from 'react';
 import './App.css';
 import ScheduleContext from './ScheduleContext';
-import Agenda from './components/Agenda/Agenda';
+import BrowserMenu from './components/BrowserMenu/BrowserMenu';
+
 import useBool from './components/useBoolean';
 
 const reducer =(state, action) =>{
@@ -66,7 +67,12 @@ function App() {
     }}>
 
       <div className="App">
-        <Agenda></Agenda>
+          <div className="container">
+            <div>
+              <h1 className="title">Gym schedule</h1>
+            </div>
+            <BrowserMenu></BrowserMenu>
+          </div>
       </div>
     </ScheduleContext.Provider>
   );

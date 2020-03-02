@@ -1,44 +1,57 @@
 import React from 'react';
+import './BrowserMenu.scss';
 import {BrowserRouter,
-    Link,
     Switch,
     Route} from 'react-router-dom';
-
+import Links from './Links';
+import DayCard from '../DayCard/DayCard'; 
 
     const BrowserMenu = () => {
         const Days =[
             {   
+                
                 name: "Lunes",
-                route: "",
+                route: "/monday",
             },
             {   
                 name: "Martes",
-                route: "",
+                route: "/tuesday",
             },
             {   
                 name: "Miercoles",
-                route: "",
+                route: "/wednesday",
             },
             {   
                 name: "Jueves",
-                route: "",
+                route: "/thursday",
             },
             {   
                 name: "Viernes",
-                route: "",
+                route: "/friday",
             },
             {   
                 name: "Sabado",
-                route: "",
+                route: "/saturday",
             },
             {   
                 name: "Domingo",
-                route: "",
+                route: "/sunday",
             },
         ]
         return (
-            <div>
-                <BrowserRouter>
+            <div className="browser-router">
+                <BrowserRouter className="browser-router"> 
+                    <Links days={Days}/>
+                    <Switch>
+                        {   
+                            Days.map(day=>{
+                             return(<Route path= {day.route} >
+                                <DayCard dayName={day.name} ></DayCard>
+                                </Route>)
+                            })
+                        }
+                        
+                    </Switch>       
                 </BrowserRouter>
             </div>
         );

@@ -30,7 +30,6 @@ const Activity = ({activity, dayName}) => {
 
     return(
         <div>
-            
             <div className="activity-container">
                 <span className="edit-activity">
                     <FontAwesomeIcon icon={faPen} className="icon" onClick={toggleEditor}/>              

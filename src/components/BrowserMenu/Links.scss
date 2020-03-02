@@ -1,0 +1,24 @@
+.day-menu{
+    align-items: center;
+    background-color: #f6c803;
+    box-sizing: border-box;
+    border-radius: 3px;
+    display: flex;
+    font-family: 'Fredoka One' ;
+    justify-content: space-around;
+    padding: 30px;
+    padding-top:15px;
+    padding-bottom: 15px;
+    width:100%;
+
+    a{  
+        color: white;
+        font-family: 'Graduate';
+        text-decoration: none;
+        margin: 5px;
+        &:visited {
+            color: white;
+        }
+
+    }
+}

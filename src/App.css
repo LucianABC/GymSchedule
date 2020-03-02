@@ -1,9 +1,28 @@
 .App {
-  text-align: center;
+  align-items: baseline;
   background-image: url('./fondo.jpg');
   background-size: contain;
   background-position: center;
+  display: flex;
+  height: 100%;
   width: 100%;
+}
+
+.container {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin:50px;
+  padding: 50px;
+  padding-top: 0;
+  width: 100%;
+}
+
+.title {
+  font-family: 'Bungee Shade' ;
+  font-size: 48px;
 }
 
 
